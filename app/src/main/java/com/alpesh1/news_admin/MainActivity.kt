@@ -93,14 +93,14 @@ class MainActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val downloadUri = task.result
                         var Key = reference.root.push().key
-                        reference.root.child("Images").child(Key!!).child("imagesss")
+                        reference.root.child("User").child(Key!!).child("UploadImages")
                             .setValue(downloadUri.toString())
 
                     } else {
 
                     }
                 }
-                
+
             }
         }
 
@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
             if (requestCode == image_Code) {
 
-                var Uri = data?.data!!
+                Uri = data?.data!!
                 binding.imgImage.setImageURI(Uri)
 
             }

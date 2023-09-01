@@ -79,8 +79,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:src="@drawable/image_border"/>
-
-
+            
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
