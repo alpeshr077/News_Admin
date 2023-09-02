@@ -46,33 +46,13 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            app:cardCornerRadius="30dp"
-            app:cardUseCompatPadding="true"
-            app:cardElevation="5dp"
-            app:cardBackgroundColor="#4D2DB7">
-
-            <TextView
-                android:id="@+id/NewsBusiness"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Business News"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_gravity="center"/>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:cardBackgroundColor="#9D44C0"
+            app:cardBackgroundColor="#4D2DB7"
             app:cardCornerRadius="30dp"
             app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
 
             <TextView
-                android:id="@+id/NewsSports"
+                android:id="@+id/NewsBusiness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -80,26 +60,6 @@
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold" />
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:cardCornerRadius="30dp"
-            app:cardUseCompatPadding="true"
-            app:cardElevation="5dp"
-            app:cardBackgroundColor="#EC53B0">
-
-            <TextView
-                android:id="@+id/NewsEntertainment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Business News"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_gravity="center"/>
 
         </androidx.cardview.widget.CardView>
 
