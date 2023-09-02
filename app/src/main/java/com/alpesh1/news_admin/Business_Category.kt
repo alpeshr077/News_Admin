@@ -2,19 +2,19 @@ package com.alpesh1.news_admin
 
 import android.content.Intent
 import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.alpesh1.news_admin.databinding.ActivityMainBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
-class MainActivity : AppCompatActivity() {
+class Business_Category : AppCompatActivity() {
 
     lateinit var reference: DatabaseReference
     lateinit var storageReference: StorageReference
@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var edtDes: EditText
     lateinit var edtContent: EditText
     var image_Code = 11
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -50,7 +49,6 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, image_Code)
         }
 
-
         btnSubmit.setOnClickListener {
 
             val title = edtTitle.text.toString()
@@ -59,24 +57,24 @@ class MainActivity : AppCompatActivity() {
             val content = edtContent.text.toString()
 
             if (title.isEmpty()) {
-                Toast.makeText(this@MainActivity, "Fill Title", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Business_Category, "Fill Title", Toast.LENGTH_SHORT).show()
             } else if (date.isEmpty()) {
-                Toast.makeText(this@MainActivity, "insert date", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Business_Category, "insert date", Toast.LENGTH_SHORT).show()
             } else if (des.isEmpty()) {
-                Toast.makeText(this@MainActivity, "insert description", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Business_Category, "insert description", Toast.LENGTH_SHORT).show()
             } else if (content.isEmpty()) {
-                Toast.makeText(this@MainActivity, "fill content", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Business_Category, "fill content", Toast.LENGTH_SHORT).show()
             } else {
-//                val key = reference.root.push().key
-//                val model = UserModel(key, title, date, des, content)
-//                reference.root.child("IndiaNews").child(key!!).setValue(model)
+                val key = reference.root.push().key
+                val model = UserModel(key, title, date, des, content)
+                reference.root.child("BusinessNews").child(key!!).setValue(model)
 
                 edtTitle.setText("")
                 edtDate.setText("")
                 edtDes.setText("")
                 edtContent.setText("")
 
-                Toast.makeText(this@MainActivity, "Data Submit", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Business_Category, "Data Submit", Toast.LENGTH_SHORT).show()
 
 
                 val ref = storageReference.child("images/${Uri.lastPathSegment}.jpg")
@@ -92,17 +90,9 @@ class MainActivity : AppCompatActivity() {
                 }.addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val downloadUri = task.result
-
-                        val key = reference.root.push().key
-                        val model = UserModel(key, title, date, des, content)
-
-//                        var Key = reference.root.push().key
-//                        reference.root.child("IndiaNews").child(Key!!).child("UploadImages")
-
-                        reference.root.child("IndiaNews").child(key!!).setValue(model,downloadUri.toString())
-
-
-//                            .setValue(downloadUri.toString())
+                        var Key = reference.root.push().key
+                        reference.root.child("BusinessNews").child(Key!!).child("UploadImages")
+                            .setValue(downloadUri.toString())
 
                     } else {
 
@@ -113,7 +103,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -129,6 +118,5 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-
 
 }
